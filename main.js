@@ -104,7 +104,7 @@ function capitalizeFirstLetter(string) {
     
     for (let i = 0; i < arrString.length; i++) {
 
-        let string = arrString[i];
+        let string = arrString[i].toLowerCase();
 
         arrResult.push(string.charAt(0).toUpperCase() + string.slice(1));
     }
