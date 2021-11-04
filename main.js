@@ -49,20 +49,7 @@ const teamMembers = [
 for (let i = 0; i < teamMembers.length; i++) {
     let member = teamMembers[i];
 
-    let teamCard = document.createElement('div');
-    teamCard.classList.add('team-card');
-
-    let cardImage = document.createElement('div');
-    cardImage.classList.add('card-image');
-    cardImage.innerHTML = `<img class='card-image' src='${member.profilePicture}' alt='${member.name}'/>`;
-
-    let cardText = document.createElement('div');
-    cardText.classList.add('card-text');
-    cardText.innerHTML = `<h3>${member.name}</h3><p>${member.position}</p>`;
-
-    teamCard.append(cardImage, cardText);
-
-    teamContainer.append(teamCard);
+    renderObjData(member);
 }
 
 addButton.addEventListener('click', function() {
@@ -74,19 +61,37 @@ addButton.addEventListener('click', function() {
     };
 
     teamMembers.push(newMember);
+    
+    renderObjData(newMember);
 
-    let teamCard = document.createElement('div');
-    teamCard.classList.add('team-card');
+    teamContainer.append(teamCard);
+});
 
-    let cardImage = document.createElement('div');
-    cardImage.classList.add('card-image');
-    cardImage.innerHTML = `<img class='card-image' src='${newMember.profilePicture}' alt='${newMember.name}'/>`;
+// helper function
 
-    let cardText = document.createElement('div');
-    cardText.classList.add('card-text');
-    cardText.innerHTML = `<h3>${newMember.name}</h3><p>${newMember.position}</p>`;
+// renders object data
+function renderObjData(object) {
+
+    let teamCard = createNewElement('div', 'team-card');
+
+    let cardImage = createNewElement('div', 'card-image');
+
+    let cardText = createNewElement('div', 'card-text');
+
+    cardImage.innerHTML = `<img src='${object.profilePicture}' alt='${object.name}'/>`;
+
+    cardText.innerHTML = `<h3>${object.name}</h3>
+        <p>${object.position}</p>`;
 
     teamCard.append(cardImage, cardText);
 
     teamContainer.append(teamCard);
-});
+}
+
+// creates new DOM elements
+function createNewElement(element, elementClass) {
+    let newElement = document.createElement(element);
+    newElement.classList.add(elementClass);
+
+    return newElement;
+}
