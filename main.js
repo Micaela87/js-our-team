@@ -55,9 +55,9 @@ for (let i = 0; i < teamMembers.length; i++) {
 addButton.addEventListener('click', function() {
 
     const newMember = {
+        'profilePicture': newMemberImage.value,
         'name': newMemberName.value,
-        'position': newMemberRole.value,
-        'profilePicture': newMemberImage.value
+        'position': newMemberRole.value
     };
 
     teamMembers.push(newMember);
