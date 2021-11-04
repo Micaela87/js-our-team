@@ -78,7 +78,12 @@ function renderObjData(object) {
 
     let cardText = createNewElement('div', 'card-text');
 
-    cardImage.innerHTML = `<img src='${object.profilePicture}' alt='${object.name}'/>`;
+    if (object.profilePicture === '') {
+        cardImage.innerHTML = `<img src='https://via.placeholder.com/370x397.jpg' alt='${object.name}'/>`;
+    } else {
+        cardImage.innerHTML = `<img src='${object.profilePicture}' alt='${object.name}'/>`;
+    }
+    
 
     cardText.innerHTML = `<h3>${object.name}</h3>
         <p>${object.position}</p>`;
