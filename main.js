@@ -74,4 +74,19 @@ addButton.addEventListener('click', function() {
     };
 
     teamMembers.push(newMember);
+
+    let teamCard = document.createElement('div');
+    teamCard.classList.add('team-card');
+
+    let cardImage = document.createElement('div');
+    cardImage.classList.add('card-image');
+    cardImage.innerHTML = `<img class='card-image' src='${newMember.profilePicture}' alt='${newMember.name}'/>`;
+
+    let cardText = document.createElement('div');
+    cardText.classList.add('card-text');
+    cardText.innerHTML = `<h3>${newMember.name}</h3><p>${newMember.position}</p>`;
+
+    teamCard.append(cardImage, cardText);
+
+    teamContainer.append(teamCard);
 });
