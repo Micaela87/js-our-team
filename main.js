@@ -8,6 +8,10 @@ Ogni membro dovrà avere le informazioni necessarie per stampare la relativa car
 
 // DOM nodes
 const teamContainer = document.querySelector('.team-container');
+const addButton = document.getElementById('addMemberButton');
+const newMemberName = document.getElementById('name');
+const newMemberRole = document.getElementById('role');
+const newMemberImage = document.getElementById('image');
 
 const teamMembers = [
     {
@@ -60,3 +64,14 @@ for (let i = 0; i < teamMembers.length; i++) {
 
     teamContainer.append(teamCard);
 }
+
+addButton.addEventListener('click', function() {
+
+    const newMember = {
+        'name': newMemberName.value,
+        'position': newMemberRole.value,
+        'profilePicture': newMemberImage.value
+    };
+
+    teamMembers.push(newMember);
+});
