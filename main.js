@@ -56,15 +56,15 @@ addButton.addEventListener('click', function() {
 
     const newMember = {
         'profilePicture': newMemberImage.value,
-        'name': newMemberName.value,
-        'position': newMemberRole.value
+        'name': capitalizeFirstLetter(newMemberName.value),
+        'position': capitalizeFirstLetter(newMemberRole.value)
     };
+
+    console.log(newMember);
 
     teamMembers.push(newMember);
     
     renderObjData(newMember);
-
-    teamContainer.append(teamCard);
 });
 
 // helper function
@@ -94,4 +94,22 @@ function createNewElement(element, elementClass) {
     newElement.classList.add(elementClass);
 
     return newElement;
+}
+
+// renders data with first letter capitalized
+function capitalizeFirstLetter(string) {
+    let arrString = string.split(' ');
+
+    let arrResult = [];
+    
+    for (let i = 0; i < arrString.length; i++) {
+
+        let string = arrString[i];
+
+        arrResult.push(string.charAt(0).toUpperCase() + string.slice(1));
+    }
+
+    let result = arrResult.join(' ');
+
+    return result;
 }
